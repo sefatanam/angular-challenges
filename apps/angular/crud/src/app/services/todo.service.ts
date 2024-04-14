@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable, delay, of } from 'rxjs';
+import { Observable, delay } from 'rxjs';
 import { Todo } from '../interfaces/todo.interface';
 
 const BASE_URL = 'https://jsonplaceholder.typicode.com/todos';
@@ -31,28 +31,5 @@ export class TodoService {
 
   delete(todoId: number) {
     return this.http.delete(`${BASE_URL}/${todoId.toString()}`);
-  }
-}
-
-@Injectable({
-  providedIn: 'root',
-})
-export class MockTodoService {
-  get(): Observable<Todo[]> {
-    const fakeTodos: Todo[] = [
-      { id: 1, title: 'Mock Todo 1', completed: false },
-      { id: 2, title: 'Mock Todo 2', completed: true },
-      { id: 3, title: 'Mock Todo 3', completed: false },
-    ];
-    return of(fakeTodos).pipe(delay(1000));
-  }
-
-  update(todo: Todo): Observable<Todo> {
-    return of(todo);
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  delete(todoId: number) {
-    return of(null);
   }
 }

@@ -75,11 +75,3 @@ export class TodoStore {
     });
   }
 }
-
-export function mockInjectQueryClient() {
-  return {
-    getQueryData: jest.fn(),
-    setQueryData: jest.fn(),
-    // Add any other methods or properties that you're using in your code
-  };
-}
